@@ -30,11 +30,44 @@ const saveAppointment = (req, res, next) => {
   });
 };
 
+const savePet = (req, res, next) => {
+  const validationRule = {
+    dateTime: 'required|string',
+    purpose: 'required|string|max:500',
+    owner: 'required|string',
+    name: 'required|string',
+    species: 'required|string',
+    breed: 'required|string',
+    age: 'required|string',
+    weight: 'required|string',
+    medicalHistory: [
+      {
+        vaccineType: 'required|string',
+        date: 'required|date',
+        secondDose: 'required|date'
+      }
+    ]
+  };
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(400).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 // app.get('/profile', requiresAuth(), (req, res) => {
 //   res.send(JSON.stringify(req.oidc.user));
 // });
 
 module.exports = {
   checkId,
-  saveAppointment
+  saveAppointment,
+  savePet
 };

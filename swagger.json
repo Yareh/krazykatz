@@ -79,6 +79,7 @@
         }
       }
     },
+
     "/pets/": {
       "get": {
         "description": "",
@@ -95,9 +96,48 @@
           "201": {
             "description": "Created"
           }
+        },
+        "properties": {
+          "owner": {
+              "example": "any"
+          },
+          "name": { 
+              "example": "any"
+          },
+          "species": { 
+            "example": "any"
+          },
+          "breed": { 
+            "example": "any"
+          },
+          "age": { 
+            "example": "any"
+          },
+          "weight": { 
+            "example": "any"
+          },
+          "medicalHistory": {
+            "description": "Array of medical history",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "vaccineType": {
+                  "example": "any"
+                },
+                "date": {
+                  "example": "any"
+                },
+                "secondDose": {
+                  "example": "any"
+                }
+              }
+            }
+          }
         }
       }
     },
+    
     "/pets/{id}": {
       "get": {
         "description": "",

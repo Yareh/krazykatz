@@ -8,12 +8,12 @@ router.get('/', petsController.getAllPets);
 router.get('/:id', petsController.getSinglePet);
 router.post(
   '/',
-  // validation.savepets,
+  // validation.savePet,
   petsController.createPet
 );
 router.put(
   '/:id',
-  // validation.savepets,
+  // validation.savePet,
   petsController.updatePet
 );
 router.delete('/:id', petsController.deletePet);
